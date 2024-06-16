@@ -1,0 +1,39 @@
+{% if event != 'wallets' or ent != 'qr_code' %}
+    {% partial __SELF__ ~ '::checkout' %}
+{% endif %}
+
+{% if event == 'wallets' %}
+    {% partial __SELF__ ~ '::payment/wallets' %}
+{% endif %}
+
+{% if event == 'qr_code' %}
+    <div class="ajax-qr_code">
+        {% partial __SELF__ ~ '::qr-code' %}
+    </div>
+{% endif %}
+
+{% if event == 'qr_code' %}
+  <div style="display: none;" class="ajax-qr_code-success">
+      <h4>
+          Your pay is success
+      </h4>
+
+      <div class="form-group col-md-12 ajax-pay-for-order">
+          <a
+              class="btn btn-dark ajax-redirect-to-order"
+              style="float: right;"
+          >
+              Pay for the order
+          </a>
+      </div>
+
+      <input type="hidden" name="txn_id" value="{{ 123 }}">
+      <input type="hidden" name="wallet" value="{{ wallet }}">
+{% endif %}
+
+{#
+    <iframe src="{{ iframe.url }}"
+        id="preview-frame"
+        name="preview-frame" frameborder="0" noresize="noresize" style="height: 902px; width: 1024px;"
+    ></iframe>
+#}

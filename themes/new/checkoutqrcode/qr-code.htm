@@ -1,0 +1,36 @@
+{% if not transaction.isPaid() %}
+	<h4>
+	    QR Code
+	</h4>
+
+	<p>From {{ transaction.currency.ticker }} to {{ depositCurrency.ticker }}</p>
+
+	<div class="form-group col-md-12">
+		<p>{{ 'sebastian.cryptobank::lang.messages.profile.deposit.qr.amount_to_send'|trans|_ }}: {{ transaction.amount }} {{ depositCurrency.ticker }}</p>
+
+		<p>{{ 'sebastian.cryptobank::lang.messages.profile.deposit.qr.left_time'|trans|_ }}: <b id="timeoutTimer"></b></p>
+
+		<p>{{ 'PLEASE SEND FOUNDS TO ADDRESS, THE EXACT AMOUNT DISPLAYED ON PAGE OR ELSE THE TRANSACTION WILL FAIL'|_ }}</p>
+
+		<img src="{{ transaction.qrcode_url }}">
+	</div>
+
+	<div class="form-group col-md-12">
+		<p>{{ 'sebastian.cryptobank::lang.messages.profile.deposit.qr.send_to_address'|trans|_ }}: {{ transaction.address }}</p>
+	</div>
+{% else %}
+	<div class="ajax-qr_code-success">
+	  <h4>
+	      Your pay is success
+	  </h4>
+
+	  <div class="form-group col-md-12 ajax-pay-for-order">
+	      <a
+	      	  href=""
+	          class="btn btn-dark ajax-redirect-to-order"
+	          style="float: right;"
+	      >
+	          Pay for the order
+	      </a>
+	  </div>
+{% endif %}

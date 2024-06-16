@@ -1,0 +1,80 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        type: text
+        span: full
+
+    phone:
+        label: Phone number
+        type: text
+        span: right
+
+    email:
+        label: Email address
+        type: text
+        span: left
+
+    location_section:
+        type: section
+        comment: Location
+
+    country:
+        label: Country
+        type: text
+        span: left
+
+    city:
+        label: City
+        type: text
+        span: right
+
+    district:
+        label: District
+        type: text
+        span: left
+
+    locatie:
+        label: Locatie
+        type: text
+        span: right
+
+    comeny_section:
+        type: section
+
+    company_name:
+        label: Company name
+        type: text
+        span: left
+
+    budget:
+        label: Budget
+        type: text
+        span: right
+
+    text:
+        label: message
+        type: textarea
+        span: full
+        size: middle
+
+    user_agent_section:
+        type: section
+
+    url:
+        label: Url
+        type: text
+        span: full
+
+    ip:
+        label: IP address
+        type: text
+        span: left
+
+    user_agent:
+        label: User agent
+        type: text
+        span: right

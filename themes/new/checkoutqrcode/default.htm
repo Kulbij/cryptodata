@@ -1,0 +1,17 @@
+<div class="container">
+	<form
+		data-request-validate
+        data-request-flash
+	>
+		<div id="ajaxQrCodeResult">
+			{% partial __SELF__ ~ '::qr-code' %}
+		</div>
+
+		<input type="hidden" name="txn_id" value="{{ transaction.txn_id }}">
+		<input type="hidden" name="wallet" value="{{ wallet.id }}">
+		<input type="hidden" name="currency_id" value="{{ wallet.currency_id }}">
+		<input type="hidden" name="timeout" value="{{ timeout }}">
+		<input type="hidden" name="gateway" value="{{ transaction.gateway.type }}">
+		<input type="hidden" name="order_id" value="{{ transaction.order.id }}">
+	</form>
+</div>

@@ -1,0 +1,39 @@
+<div class="guarantee-status" id="waranty-status">
+    <div class="gurantee-title">
+        <span class="guarantee-gold">WARRANTY <span class="status-gold">STATUS</span></span>
+    </div>
+    <div class="guarantee-img">
+        <div class="guarantee-border-div">
+            <div class="gurantee-title-right">Warranty</div>
+            <div class="second-gold-border">
+            	<div id="reslut-message"></div>
+                <form
+                	class="form-guarantee"
+                	data-request="{{ __SELF__ }}::onCheck"
+                    data-request-update="'{{ __SELF__ }}::message.htm': '#reslut-message'"
+                    data-request-validate
+            	>
+                   <input type="text" name="imei1" class="imei" placeholder="IMEI:">
+                   <span data-validate-for="imei1"></span>
+                   <input type="text" name="serial" class="S-N" placeholder="S/N:">
+                   <span data-validate-for="serial"></span>
+                   <input type="text" name="meid" class="meid" placeholder="MEID:">
+                   <span data-validate-for="meid"></span>
+
+					<div class="guarantee-check">
+						<button>
+							<img src="{{'assets/images/repair/5-buton-check.png'|theme}}" alt="" class="guarant-btn">
+						</button>
+					</div>
+                </form>
+            </div>
+            <div class="impulse-k1-subsol">
+                IMPULSE K1
+            </div>
+            <div class="smartphone-group">
+                smartphone
+            </div>
+        </div>
+    </div>
+    
+</div>

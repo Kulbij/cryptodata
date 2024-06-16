@@ -1,0 +1,37 @@
+<div class="place-order-main">
+    <div class="place-order-title">
+        <div class="place-order-title-text">{{ 'PLACE ORDER'|_ }}</div>
+        <div class="place-order-tabs">
+            <div class="{{ type_form == 'personal' ? 'personal-tab' : 'company-tab' }}">
+                <a
+                    href="javascript:;"
+                    class="{{ type_form == 'personal' ? 'personal-tab-text' : 'company-tab-text' }}"
+                    data-request="{{ __SELF__ }}::onSwitchForm"
+                    data-request-update="'{{ __SELF__ }}::checkout': '#checkoutForm'"
+                    data-request-data="type_form: 'personal'"
+                >{{ 'Personal'|_ }}</a>
+            </div>
+            <div class="{{ type_form == 'company' ? 'personal-tab' : 'company-tab' }}">
+                <a
+                    href="javascript:;"
+                    class="{{ type_form == 'company' ? 'personal-tab-text' : 'company-tab-text' }}"
+                    data-request="{{ __SELF__ }}::onSwitchForm"
+                    data-request-update="'{{ __SELF__ }}::checkout': '#checkoutForm'"
+                    data-request-data="type_form: 'company'"
+                >{{ 'Company'|_ }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="form-block-3 w-form">
+        {% partial __SELF__ ~ '::form' %}
+
+        <input class="another-method no-active-link" type="submit" name="submit" value="Submit" style="float: right;">
+      
+        <div class="w-form-done">
+            <div>Thank you! Your submission has been received!</div>
+        </div>
+        <div class="w-form-fail">
+            <div>Oops! Something went wrong while submitting the form.</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<h4>
+  {{ 'sebastian.marketplace::lang.messages.checkout.steps.1'|trans }}
+</h4>
+<div class="row">
+    <div class="form-group col-md-9">
+        <select
+            class="form-control"
+            name="payment"
+        >
+            <option selected value>
+                {{ 'sebastian.marketplace::lang.messages.checkout.currency.empty_option'|trans }}
+            </option>
+                {% for key, payment in payments %}
+                    <option value="{{ key }}">{{ payment }}</option>
+                {% endfor %}
+        </select>
+        <div class="alert alert-danger" data-validate-for="payment"></div>
+      </div>
+      <div class="form-group col-md-3">
+          <button
+              class="btn btn-dark"
+          >
+              Next ->
+          </button>
+          <input type="hidden" name="currentStep" value="payment">
+          <input type="hidden" name="step" value="wallet">
+      </div>
+</div>

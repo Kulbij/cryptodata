@@ -1,0 +1,185 @@
+==
+{% put styles %}
+<style>
+    .no-active-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+{% endput %}
+
+<div class="shopping-cart-title">
+    <div class="available technology-title-page">
+        {{ 'SHOPPING CART'|_ }}
+    </div>
+</div>
+<form id="checkoutForm" name="email-form" data-name="Email Form" class="form" data-request="onCheckout"
+    data-request-update="'{{ __SELF__ ~ '::steps' }}': '#ajax-payments-block'"
+    data-request-success="
+        if (typeof data.timeout != 'undefined') {
+            startTimeoutDown(data.timeout);
+        }
+
+        if (typeof data.event != 'undefined' && data.event == 'qr_code' && (typeof data.is_pay == 'undefined' || data.is_pay == false)) {
+            refreshData();
+        }
+    " data-request-validate>
+    <div id="ajax-payments-block">
+        {% partial __SELF__ ~ '::steps' %}
+    </div>
+</form>
+
+{#
+<form
+    data-request="onPayment"
+    data-request-update="'{{ __SELF__ ~ '::payment-response' }}': '#ajax-payments-response'"
+>
+    <button>123</button>
+
+    <div id="ajax-payments-response">
+        
+    </div>
+</form>
+#}
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <form>
+            <div class="form-block-3 w-form" style="padding: 15px;">
+                <center>
+                    <h4>New address</h4>
+                </center>
+                <div class="form-line-one">
+                    <label for="newAddress" class="input-name">{{ 'New address'|_ }}*</label>
+                    <input type="text" class="input-field w-input" maxlength="256" name="new_address" value=""
+                        data-name="new_address" id="newAddress">
+                    <div data-validate-for="newAddress"></div>
+                </div>
+                <button class="close" style="float: right;padding: 10px;" data-request="{{ __SELF__ }}::onCreateAddress"
+                    data-request-success="
+                        if (typeof data.name != 'undefined') {
+                            $('#address').val(data.name);
+                            $('#address_2').val(data.name);
+                        }
+                    ">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% put scripts %}
+<script>
+    $('form').on('click', '#listPaymentMethods a', function () {
+        showPaymentMethods('#listPaymentMethods', $(this));
+
+        // if ($(this).data('currency') == 'crypto') {
+        //     $('#cryptoCurencies').show();
+        // }
+
+        // else {
+        //     $('#cryptoCurencies').hide();
+        // }
+    });
+
+    $('form').on('click', '#cryptoCurencies a', function () {
+        showPaymentMethods('#cryptoCurencies', $(this));
+    });
+
+    $('form').on('click', '#listDeliveryMethods a', function () {
+
+    });
+
+    let showPaymentMethods = function (id, el) {
+        $(id).find('a').removeClass('selected-method');
+        $(id).find('a').addClass('another-method');
+        $(id).find('a div').removeClass('new-address-tab-text');
+        $(id).find('a div').addClass('acount-tab-text');
+
+        let input = el.find('input[name="crypto"]');
+        if (input.length > 0) {
+            input.attr('checked', 'checked');
+        }
+
+        let payment = el.data('payment');
+
+        if (payment.length > 0) {
+            $('input[name="payment"]').val(payment);
+        }
+
+        if (el.hasClass('another-method')) {
+            el.addClass('selected-method');
+
+            let text = el.find('.acount-tab-text');
+
+            if (text.hasClass('acount-tab-text')) {
+                text.addClass('new-address-tab-text');
+            }
+        }
+    }
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    $('body').on('click', '#myBtn', function () {
+        modal.style.display = "block";
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endput %}

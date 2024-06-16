@@ -1,0 +1,97 @@
+<div class="form-line-selector">
+    <label for="new_address" class="input-name">{{ 'Select Delivery Address'|_ }}</label>
+    <div class="selector-form" id="listDeliveryMethods">
+        {% if user.account_addresses|length > 1 %}
+            <a
+                href="javascript:;"
+                class="{{ type == 'account-' ? 'new-address-tab ' : 'account-tab ' }}no-active-link"
+                data-type="account"
+                data-request="{{ __SELF__ }}::onSwitchAddress"
+                data-request-update="'{{ __SELF__ }}::payment-methods': '#ajaxAddresses'"
+                data-request-data="type: 'account'"
+            >
+                <div class="{{ type == 'account' ? 'new-address' : 'acount' }}-tab-text">{{ 'Account'|_ }}</div>
+            </a>
+        {% endif %}
+        {% if user.account_addresses|length > 0 %}
+            <a
+                id="myBtn"
+                href="javascript:;"
+                class="{{ type == 'new_address-' ? 'new-address-tab ' : 'account-tab ' }}no-active-link"
+                {#
+                data-type="address"
+                data-request="{{ __SELF__ }}::onSwitchAddress"
+                data-request-update="'{{ __SELF__ }}::payment-methods': '#ajaxAddresses'"
+                data-request-data="type: 'new_address'"
+                #}
+            >
+                <div class="{{ type == 'new_address' ? 'new-address' : 'account' }}-tab-text">{{ 'New Address'|_ }}</div>
+            </a>
+        {% endif %}
+
+        <input type="hidden" name="delivery_address_type" value="{{ type }}">
+        <input type="hidden" name="type_form" value="{{ type_form }}">
+        <input type="hidden" name="wallet" value="">
+        <input type="hidden" name="currentStep" value="wallet">
+            <input type="hidden" name="step" value="order">
+    </div>
+</div>
+
+{% if type == 'new_address' %}
+    {#
+    <div class="form-line-one">
+        <label for="new_address" class="input-name"></label>
+        <input
+            type="text"
+            class="input-field w-input"
+            maxlength="256"
+            name="delivery_address"
+            data-name="New address"
+            id="new_address"
+        >
+    </div>
+    #}
+    <div data-validate-for="delivery_address"></div>
+{% endif %}
+
+{% if type == 'account' %}
+    
+    <div class="form-line-one">
+        <label for="delivery_address" class="input-name">
+            {{ address.full_name }}
+        </label>
+        <select
+            name="delivery_address"
+            class="input-field w-input"
+            id="delivery_address"
+            onchange="
+                let address = $('select :selected').data('name');
+
+                $('#address').val(address);
+                $('#address_2').val(address);
+            "
+        >
+            {% for address in user.account_addresses %}
+                <option
+                    value="{{ address.id }}"
+                    data-name="{{ address.name }}"
+                >
+                    {{ address.full_name }}: {{ address.name }}
+                </option>
+            {% endfor %}
+        </select>
+        {#
+        <input
+            type="text"
+            class="input-field w-input"
+            maxlength="256"
+            name="address-{{ address.id }}"
+            data-name="{{ address.name }}"
+            id="address-{{ address.id }}"
+            value="{{ address.name }}"
+        >
+        #}
+    </div>
+    <div data-validate-for="delivery_address"></div>
+{% endif %}
+

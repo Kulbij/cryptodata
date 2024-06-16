@@ -1,0 +1,44 @@
+{% for currency in currencies %}
+    <a
+        href="javascript:;"
+        class="another-method no-active-link"
+    >
+        <label for="currency-{{ currency.slug }}">
+            <div class="acount-tab-text">
+                <input
+                    type="radio"
+                    name="currency_id"
+                    value="{{ currency.id }}"
+                    id="currency-{{ currency.slug }}"
+                    {{ loop.index == 1 ? 'checked' : '' }}
+                >
+                {{ currency.name }}
+            </div>
+        </label>
+    </a>
+{% endfor %}
+
+{#
+<a
+    href="javascript:;"
+    class="another-method no-active-link"
+>
+    <input type="radio" name="crypto" value="btc">
+    <div class="acount-tab-text">{{ 'BTC'|_ }}</div>
+</a>
+
+<a
+    href="javascript:;"
+    class="another-method no-active-link"
+>
+    <input type="radio" name="crypto" value="kbc">
+    <div class="acount-tab-text">{{ 'KBC'|_ }}</div>
+</a>
+<a
+    href="javascript:;"
+    class="another-method no-active-link"
+>
+    <input type="radio" name="crypto" value="imp">
+    <div class="acount-tab-text">{{ 'IMP'|_ }}</div>
+</a>
+#}

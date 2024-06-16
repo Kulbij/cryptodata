@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Application
+
+# Model Form Field configuration
+form: $/sebastian/forms/models/application/fields.yaml
+
+# Model Class name
+modelClass: Sebastian\Forms\Models\Application
+
+# Default redirect location
+defaultRedirect: sebastian/forms/applications
+
+# Create page
+create:
+    title: Create Application
+    redirect: sebastian/forms/applications/update/:id
+    redirectClose: sebastian/forms/applications
+
+# Update page
+update:
+    title: Edit Application
+    redirect: sebastian/forms/applications
+    redirectClose: sebastian/forms/applications
+
+# Preview page
+preview:
+    title: Preview Application

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+        <meta name="robots" content="noindex">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="backend-base-path" content="/backend">
+        <meta name="csrf-token" content="RvkJCauxU3Lm8BwkdDWrGIpeUPoBbS0HwOZPMJzZ">
+        <link rel="icon" type="image/png" href="http://cryptodata.localhost/modules/backend/assets/images/favicon.png">
+        <title>Administration Area</title>
+        <link href="http://cryptodata.localhost/modules/system/assets/ui/storm.css" rel="stylesheet">
+        <link href="http://cryptodata.localhost/modules/backend/assets/css/october.css" rel="stylesheet">
+        <script src="http://cryptodata.localhost/modules/backend/assets/js/vendor/jquery.min.js"></script>
+        <script src="http://cryptodata.localhost/modules/system/assets/js/framework.js"></script>
+        <script data-cfasync="false" src="http://cryptodata.localhost/modules/system/assets/ui/storm-min.js"></script>
+        <script data-cfasync="false" src="http://cryptodata.localhost/modules/backend/assets/js/october-min.js"></script>
+        <script src="http://cryptodata.localhost/modules/backend/assets/js/auth/auth.js"></script>
+        <script src="http://cryptodata.localhost/modules/system/assets/js/lang/lang.en.js"></script>
+                            <style>
+        .br-p{color:#34495e}.br-s{color:#e67e22}.br-a{color:#3498db}.br-p-s10{color:#2d4965}.br-s-s10{color:#f27d16}.br-a-s10{color:#289ae7}.br-p-s20{color:#25496d}.br-s-s20{color:#ff7c09}.br-a-s20{color:#1c9df3}.bg-p{background-color:#34495e}.bg-s{background-color:#e67e22}.bg-a{background-color:#3498db}.bg-p-s10{background-color:#2d4965}.bg-s-s10{background-color:#f27d16}.bg-a-s10{background-color:#289ae7}.bg-p-s20{background-color:#25496d}.bg-s-s20{background-color:#ff7c09}.bg-a-s20{background-color:#1c9df3}.sidenav-tree ul.top-level>li>div.group:before{border-top-color:#34495e}.sidenav-tree ul.top-level>li>ul li.active{border-color:#e67e22}.control-assetlist ul li.active a:after,.control-assetlist ul li.active a.link:after{background:#e67e22}body.outer{background:#293e53}table.table.data tbody tr.active td:first-child{border-left:3px solid #e67e22}.fancy-layout .form-tabless-fields{background:#e67e22}.fancy-layout .form-tabless-fields .loading-indicator-container .loading-indicator{background:#e67e22}.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title,.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title:before,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title:before,.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title:after,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li.active a>span.title:after{background:#e67e22}.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title,.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title:before,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title:before,.fancy-layout .control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title:after,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container>ul.nav-tabs>li a>span.title:after{background-color:#b05606}.fancy-layout .control-tabs.master-tabs>div>div.tabs-container,.fancy-layout.control-tabs.master-tabs>div>div.tabs-container{background-color:#bf5d07}.fancy-layout .control-tabs.primary-tabs.master-area>div>ul.nav-tabs,.fancy-layout.control-tabs.primary-tabs.master-area>div>ul.nav-tabs{background:#e67e22}.fancy-layout .control-tabs.secondary-tabs.secondary-content-tabs.primary-collapsed>div>ul.nav-tabs,.fancy-layout.control-tabs.secondary-tabs.secondary-content-tabs.primary-collapsed>div>ul.nav-tabs{background:#e67e22}.control-filelist ul li.active>a:after{background:#e67e22}div.control-componentlist.droppable{background-color:#f0b37e}.stripe-loading-indicator .stripe,.stripe-loading-indicator .stripe-loaded{background:#3498db}.control-balloon-selector ul li.active{background:#e67e22 !important}    </style>
+    </head>
+    <body class="outer signin preload">
+        <div id="layout-canvas">
+            <div class="layout">
+
+                <div class="layout-row min-size layout-head">
+                    <div class="layout-cell">
+                        <h1 class="oc-logo">IMPulse</h1>
+                    </div>
+                </div>
+                <div class="layout-row">
+                    <div class="layout-cell">
+                        <div class="outer-form-container">
+                            <h2>Getting back to basics</h2>
+
+<form method="POST" action="http://cryptodata.localhost/backend/backend/auth/signin" accept-charset="UTF-8"><input name="_session_key" type="hidden" value="aRzbcxDMGpTtpKwIum7cIrLk6xfDW1YPPyDExXoU"><input name="_token" type="hidden" value="RvkJCauxU3Lm8BwkdDWrGIpeUPoBbS0HwOZPMJzZ">    <input type="hidden" name="postback" value="1" />
+
+    <div class="form-elements" role="form">
+        <div class="form-group text-field horizontal-form october">
+
+            <!-- Login -->
+            <input
+                type="text"
+                name="login"
+                value=""
+                class="form-control icon user"
+                placeholder="login"
+                autocomplete="off"
+                maxlength="255" />
+
+            <!-- Password -->
+            <input
+                type="password"
+                name="password"
+                value=""
+                class="form-control icon lock"
+                placeholder="password"
+                autocomplete="off"
+                maxlength="255" />
+
+            <!-- Submit Login -->
+            <button type="submit" class="btn btn-primary login-button">
+                Login            </button>
+        </div>
+
+        
+        <p class="oc-icon-lock pull-right forgot-password">
+            <!-- Forgot your password? -->
+            <a href="http://cryptodata.localhost/backend/backend/auth/restore" class="text-muted">
+                Forgot your password?            </a>
+        </p>
+
+    </div>
+</form>                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Flash Messages -->
+        <div id="layout-flash-messages"></div>
+
+    </body>
+</html>

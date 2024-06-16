@@ -1,0 +1,41 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    product:
+        label: Продукт
+        type: relation
+        nameFrom: full_name
+        emptyOption: -- Выберите продукт со списка --
+        span: left
+
+    color_id:
+        label: Цвет
+        type: dropdown
+        options: productColors
+        emptyOption: -- Выберите цвет продукта --
+        span: right
+        dependsOn: product
+
+    size_id:
+        label: Размер
+        type: dropdown
+        options: productSizes
+        emptyOption: -- Выберите размер продукта --
+        span: left
+        dependsOn: [product, color_id]
+
+    qty:
+        label: Количество
+        type: number
+        span: right
+        dependsOn: [product, color_id, size_id]
+      
+    enabled_section:
+        type: section
+        
+    is_enabled:
+        label: Видимость
+        type: switch
+        span: full

@@ -1,0 +1,60 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        invisible: true
+
+    name:
+        label: Name
+        searchable: true
+
+    phone:
+        label: Phone number
+        searchable: true
+
+    email:
+        label: Email address
+        searchable: true
+
+    city:
+        label: City
+        searchable: true
+
+    country:
+        label: Country
+        searchable: true
+
+    company_name:
+        label: Company
+        searchable: true
+        invisible: true
+
+    text:
+        label: message
+        searchable: true
+
+    url:
+        label: Url
+        searchable: true
+
+    ip:
+        label: IP address
+        searchable: true
+
+    user_agent:
+        label: User agent
+        searchable: true
+        invisible: true
+
+    created_at:
+        label: Created
+        type: datetime
+
+    updated_at:
+        label: Updated
+        type: datetime
+        invisible: true

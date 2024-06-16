@@ -1,0 +1,78 @@
+<div class="payment-method-line">
+    <label for="name-11" class="input-name">
+        {{ 'Select Payment Method'|_ }}
+    </label>
+    <div class="selector-form-payment">
+        <div class="line1-pm" id="listPaymentMethods">
+            {% for gateway in gateways %}
+                <a
+                    href="javascript:;"
+                    class="{{ loop.index == 1 ? 'selected' : 'another' }}-method no-active-link"
+                    data-payment="payment"
+                >
+                    <label for="gateway-{{ gateway.slug }}">
+                        <div class="acount-tab-text">
+                            <input
+                                id="gateway-{{ gateway.slug }}"
+                                type="radio"
+                                name="gateway"
+                                value="{{ gateway.type }}"
+
+                                data-request="onChackCurrencies"
+                                data-request-update="'{{ __SELF__ ~ '::currencies' }}' : '#cryptoCurencies'"
+                                data-request-data="type: '{{ gateway.type }}'"
+                                
+                                {{ loop.index == 1 ? 'checked' : '' }}
+                            >{{ gateway.name }}
+                        </div>
+                    </label>
+                </a>
+            {% endfor %}
+            {#
+            <a
+                href="javascript:;"
+                class="selected-method no-active-link"
+            >
+                <div class="new-address-tab-text">
+                    {{ 'Credit Card'|_ }}
+                </div>
+            </a>
+            <a
+                href="javascript:;"
+                class="another-method no-active-link"
+            >
+                <div class="acount-tab-text">
+                    {{ 'SEPA'|_ }}
+                </div>
+            </a>
+            #}
+            {#
+            <a
+                href="javascript:;"
+                class="selected-method no-active-link"
+                data-payment="paypal"
+            >
+                <div class="acount-tab-text">
+                    {{ 'PayPal'|_ }}
+                </div>
+            </a>
+            <a
+                href="javascript:;"
+                class="another-method no-active-link"
+                data-currency="crypto"
+                data-payment="crypto"
+            >
+                <div class="acount-tab-text">
+                    {{ 'Bitcoin'|_ }}
+                </div>
+            </a>
+            #}
+        </div>
+        <div
+            class="line2-pm"
+            id="cryptoCurencies"
+        >
+            {% partial __SELF__ ~ '::currencies' %}
+        </div>
+    </div>
+</div>

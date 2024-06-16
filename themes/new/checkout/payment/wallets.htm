@@ -1,0 +1,81 @@
+<h4>
+  {{ 'sebastian.marketplace::lang.messages.checkout.steps.2'|trans }}
+</h4>
+<div class="alert alert-danger" data-validate-for="wallet"></div>
+<div class="row">
+    {% if wallets|length > 0 %}
+      <div class="form-group col-md-12">
+          {% for wallet in wallets %} 
+              <li class="list-group-item">
+                  <div class="col-md-2">
+                        <input
+                            type="radio"
+                            name="wallet"
+                            id="wallet-{{ wallet.id }}"
+                            value="{{ wallet.id }}"
+                      >
+                  </div>
+                  <label for="wallet-{{ wallet.id }}" class="col-md-10" style="cursor: pointer;">
+                      <div>
+                          {{ wallet.currency.name }} ({{ wallet.currency.ticker }})
+                          <span class="badge badge-primary badge-pill">{{ wallet.formatted_balance }}</span>
+                      </div>
+                      {% if not wallet.currency.is_enabled %}
+                          <div>
+                              <small class="text-warning">Currency {{ wallet.currency.name }} ({{ wallet.currency.ticker }}) disabled</small>
+                          </div>
+                      {% endif %}
+                      {% if wallet.information.address %}
+                          <div>
+                              <small class="text-muted">Address: {{ wallet.information.address }}</small>
+                          </div>
+                      {% endif %}
+                      <small class="text-muted">created: {{ wallet.created_at }}</small>
+                      <div class="alert alert-danger" data-validate-for="wallet-{{ wallet.id }}">
+                          <p>
+                              {{ 'sebastian.marketplace::lang.messages.checkout.wallets.funds_wallet'|trans }}
+                          </p>
+                          <p>
+                              {{ 'sebastian.marketplace::lang.messages.checkout.wallets.top_up_balance'|trans }}
+                          </p>
+                          <a href="{{ 'deposit'|page({ slug: wallet.currency.slug }) }}">
+                              {{ 'sebastian.marketplace::lang.messages.checkout.wallets.deposit_title'|trans }}
+                          </a>
+                      </div>
+                  </label>
+              </li>
+          {% endfor %}
+      </div>
+    {#
+        <div class="form-group col-md-12">
+          <a href="{{ 'wallets'|page }}" style="font-size: 20px">
+              {{ 'sebastian.marketplace::lang.messages.checkout.wallets.create'|trans }}
+          </a>
+        </div>
+      #}
+    {% endif %}
+</div>
+<div class="row">
+      <div class="form-group col-md-6">
+          <a
+              href="javascript:;"
+              class="btn btn-dark"
+              data-request="onCheckout"
+              data-request-data="back: true"
+          >
+              {{ 'sebastian.marketplace::lang.messages.checkout.wallets.back'|trans }}
+          </a>
+      </div>
+      {% if wallets|length > 0 %}
+        <div class="form-group col-md-6 pull-left">
+            <button
+                class="btn btn-dark"
+                name="test"
+            >
+                {{ 'sebastian.marketplace::lang.messages.checkout.wallets.next'|trans }}
+            </button>
+            <input type="hidden" name="currentStep" value="wallet">
+            <input type="hidden" name="step" value="order">
+        </div>
+      {% endif %}
+</div>

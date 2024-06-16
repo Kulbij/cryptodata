@@ -1,0 +1,11 @@
+1.0.1: First version of Forms
+
+1.0.2:
+    - Create applications table
+    - create_applications_table.php
+1.0.4:
+    - Update applications table add company name column
+    - update_applications_table_add_company_column.php
+1.0.5:
+    - Update applications table add columns
+    - update_applications_table_add_columns.php

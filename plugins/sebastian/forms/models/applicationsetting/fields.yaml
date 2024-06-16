@@ -1,0 +1,21 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    tempalte:
+        label: Tempalte
+        type: relation
+        nameFrom: subject
+        span: left
+
+    to_email:
+        label: To mail
+        type: text
+        span: left
+
+    subject:
+        label: subject
+        type: text
+        span: right
+

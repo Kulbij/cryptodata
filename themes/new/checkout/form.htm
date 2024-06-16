@@ -1,0 +1,159 @@
+{% if type_form == 'company' %}
+    <div class="form-line-one">
+        <label for="companyName" class="input-name">{{ 'Company name'|_ }}*</label>
+        <input
+            type="text"
+            class="input-field w-input"
+            maxlength="256"
+            name="company"
+            value="{{ user.company }}"
+            data-name="Company Name"
+            id="companyName"
+        >
+    </div>
+{% endif %}
+
+<div class="form-line-one">
+    <label for="firstName" class="input-name">{{ 'First Name'|_ }}*</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="first_name"
+        value="{{ user.name }}"
+        data-name="First Name"
+        id="firstName"
+    >
+    <div data-validate-for="first_name"></div>
+</div>
+
+<input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button">
+
+<div class="form-line">
+    <label for="lastName" class="input-name">{{ 'Last Name'|_ }}*</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="last_name"
+        data-name="Last Name"
+        id="lastName"
+        value="{{ user.surname }}"
+    >
+    <div data-validate-for="last_name"></div>
+</div>
+
+<div class="form-line">
+    <label for="address" class="input-name">{{ 'Address 1'|_ }}*</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="address"
+        data-name="Address"
+        id="address"
+        value="{{ user.address }}"
+    >
+    <div data-validate-for="address"></div>
+</div>
+
+<div class="form-line">
+    <label for="address_2" class="input-name">{{ 'Address 2'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="address_2"
+        data-name="Address 2"
+        id="address_2"
+        value="{{ user.address2 }}"
+      >
+</div>
+
+<div class="form-line">
+    <label for="phone" class="input-name">{{ 'Phone Number'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="phone"
+        data-name="Phone"
+        id="phone"
+        value="{{ user.phone }}"
+    >
+    <div data-validate-for="phone"></div>
+</div>
+
+<div class="form-line">
+    <label for="city" class="input-name">{{ 'City'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="city"
+        data-name="City"
+        id="city"
+        value="{{ user.city }}"
+    >
+    <div data-validate-for="city"></div>
+</div>
+<div class="form-line">
+    <label for="country" class="input-name">{{ 'Country'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="country"
+        data-name="Country"
+        id="country"
+        value="{{ user.country.name }}"
+    >
+    <div data-validate-for="country"></div>
+</div>
+
+<div class="form-line">
+    <label for="zip_code" class="input-name">{{ 'ZipCode'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="zip_code"
+        data-name="{{ 'ZipCode'|_ }}"
+        id="zip_code"
+        value="{{ user.zip }}"
+    >
+    <div data-validate-for="zip_code"></div>
+</div>
+
+<div class="form-line">
+    <label for="email" class="input-name">{{ 'Email'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="email"
+        data-name="{{ 'Email'|_ }}"
+        id="email"
+        value="{{ user.email }}"
+    >
+</div>
+
+{#
+<div class="form-line">
+    <label for="referral_code" class="input-name">{{ 'Referral Code'|_ }}</label>
+    <input
+        type="text"
+        class="input-field w-input"
+        maxlength="256"
+        name="referral_code"
+        data-name="{{ 'Referral Code'|_ }}"
+        id="referral_code"
+    >
+</div>
+#}
+
+<div id="ajaxAddresses">
+    {% partial __SELF__ ~ '::payment-methods' %}
+</div>
+
+{% component 'paymentGateways' %}

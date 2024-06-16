@@ -1,0 +1,22 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Applications Settings
+
+# Model Form Field configuration
+form: $/sebastian/forms/models/applicationsetting/fields.yaml
+
+# Model Class name
+modelClass: sebastian\Forms\Models\ApplicationSetting
+
+# Default redirect location
+defaultRedirect: sebastian/forms/applicationsettings
+
+
+# Update page
+update:
+    title: Edit currency rate settings
+    redirect: sebastian/forms/applicationsettings
+    redirectClose: sebastian/forms/applicationsettings
